@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <PreferenceCategory
+        app:key="notification_title"
+        android:title="Notification"
+        app:iconSpaceReserved="false"
+        >
+
+    <SwitchPreferenceCompat
+        app:key="check"
+        app:title="Show notification"
+        android:defaultValue="true"
+        app:iconSpaceReserved="false"
+        />
+
+    <SwitchPreferenceCompat
+        app:key="sound"
+        app:title="Sound notification"
+        android:defaultValue="true"
+        app:iconSpaceReserved="false"
+
+        />
+
+    <ListPreference
+        android:defaultValue="5 minutes"
+        android:key="duration_notification"
+        android:title="Duration of notification"
+        android:entryValues="@array/Time_data_value"
+        android:entries="@array/Time_data"
+        app:iconSpaceReserved="false"
+        />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="data_management_title"
+        android:title="Data management"
+        app:iconSpaceReserved="false"
+    >
+
+        <Preference
+            android:key="export_data_title"
+            android:title="Export data"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="statistic_setting_title"
+        android:title="Statistic setting"
+        app:iconSpaceReserved="false">
+
+        <CheckBoxPreference
+            android:key="check_show_value_chart"
+            android:title="Show value on the chart"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false"/>
+
+        <ListPreference
+            android:defaultValue="Blue"
+            android:key="chart_color_setting"
+            android:title="Chart color"
+            android:entryValues="@array/chart_color_array_value"
+            android:entries="@array/chart_color_array"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+
+
+
+</PreferenceScreen>
