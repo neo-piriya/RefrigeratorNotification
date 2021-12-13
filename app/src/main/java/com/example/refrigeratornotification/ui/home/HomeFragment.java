@@ -1,6 +1,8 @@
 package com.example.refrigeratornotification.ui.home;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,7 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
@@ -142,8 +145,9 @@ public class HomeFragment extends Fragment {
     private void setStatusTextView(String msg) {
         statusTextView.setText(msg.toUpperCase(Locale.ROOT));
 
-
     }
+
+
 
 
     @Override
@@ -152,13 +156,7 @@ public class HomeFragment extends Fragment {
 
         testBtn = getView().findViewById(R.id.home_test);
         statusTextView = getView().findViewById(R.id.homs_status);
-        testBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(client != null && client.isConnected())
-                    publish();
-            }
-        });
+
 
         /*
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -166,11 +164,12 @@ public class HomeFragment extends Fragment {
         Toast.makeText(getContext(), name,Toast.LENGTH_LONG).show();
         */
 
+
         mOptions = new MqttConnectOptions();
         mOptions.setUserName("myhome");
         mOptions.setPassword("testtest".toCharArray());
         client = new MqttAndroidClient(getContext(), "tcp://192.168.8.2:1883", MqttClient.generateClientId());
-        Log.d("test",String.valueOf(client.isConnected()));
+
 
     }
 
@@ -178,6 +177,7 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         connect();
+
     }
 
     @Override
